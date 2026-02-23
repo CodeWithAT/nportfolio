@@ -1,0 +1,77 @@
+# PROJECT: HYBRID PORTFOLIO DEVELOPMENT PLAN (OGAKI x AZIZ KHALDI)
+
+## 1. ROLE & OBJECTIVE
+You are an Awwwards-level Front-End Developer. Your task is to build a high-performance portfolio website that creates a seamless hybrid of two specific references.
+* **Reference A (Hero Section Only):** OGAKI (Cream background, Editorial Typography, Scattered Letter Graphics).
+* **Reference B (Rest of Website):** Aziz Khaldi (Dark background, Neon Lime accents, 3D elements, Snake-line scrolling).
+
+**CRITICAL REQUIREMENT:** The user demands EXACT animation replication. The site must feel fluid, heavy, and expensive. Use `framer-motion` for all interactions.
+
+## 2. TECH STACK (MANDATORY)
+* **Framework:** Next.js 14 (App Router)
+* **Styling:** Tailwind CSS
+* **Animation:** Framer Motion (Required for complex timelines)
+* **Smooth Scroll:** React-Lenis (Mandatory for the premium "inertial" scroll feel)
+* **3D:** React Three Fiber / Drei (For the Footer Robot/Object)
+* **Icons:** Lucide React
+
+## 3. DESIGN SYSTEM
+* **Typography:**
+    * **Headings:** 'Playfair Display' or 'Cinzel' (Serif) — *Used strictly to maintain the OGAKI vibe even in dark sections.*
+    * **Body:** 'Manrope' or 'Inter' (Sans-Serif) — *Clean and readable.*
+* **Color Palette:**
+    * **Hero:** Cream (#F2F0EA) & Black Text.
+    * **Rest of Site:** Deep Black (#050505) & White Text.
+    * **Accent:** Neon Lime (#DFFF00) — *Used for buttons, hovers, and the experience line.*
+
+---
+
+## 4. SECTION-BY-SECTION IMPLEMENTATION GUIDE
+
+### SECTION 1: HERO (Source: OGAKI)
+* **Visuals:** Cream background. Massive, elegant serif text: "The social-first agency for prestige beauty."
+* **Animation (The "Curtain Reveal"):**
+    * Wrap words in a `span` with `overflow: hidden`.
+    * Animate the inner text from `y: 100%` to `y: 0%` using `transition: { duration: 0.8, ease: [0.33, 1, 0.68, 1] }`. This creates the specific "editorial reveal" seen in the reference.
+* **Scattered Letters:**
+    * Place large "O G A K" (or user initials) letters at the bottom left.
+    * **Parallax:** Use `useScroll` to make these letters move at different speeds (e.g., one moves fast, one moves slow) as the user scrolls down.
+
+### SECTION 2: INTRO & ABOUT (Source: Aziz Khaldi)
+* **The Transition:** This is the hardest part. As the user scrolls past the Hero, the Dark Background must slide *over* the Cream background (z-index layering) to create a clean break.
+* **Content:** "I'm Aziz – a Full Stack Developer..."
+* **Interaction:**
+    * **Magnetic Button:** The "About Me" button (Neon Lime) must magnetically stick to the mouse cursor slightly when hovered before snapping back.
+
+### SECTION 3: SERVICES (Source: Aziz Khaldi)
+* **Layout:** 3-Column Grid (Full Stack, UI/UX, SaaS).
+* **Styling:** Minimalist cards with thin borders.
+* **Hover Effect:** On hover, the border color transitions to Neon Lime (#DFFF00), and the card lifts `y: -10px`.
+
+### SECTION 4: PROJECTS (Source: Aziz Khaldi)
+* **Layout:** 2-Column Grid with large visuals.
+* **Animation:**
+    * **Image Parallax:** Mask the images. As the user scrolls, the image *inside* the container moves slower than the page `y` scroll. This creates a "window" effect.
+
+### SECTION 5: EXPERIENCE (Source: Aziz Khaldi)
+* **Key Feature:** The "Snake" Line.
+* **Implementation:**
+    * Create an SVG path that curves down the center of the timeline.
+    * **Scroll Draw:** Use Framer Motion's `motion.path`. Bind the `pathLength` property to the `scrollYProgress` of this section.
+    * *Result:* The Neon Lime line draws itself smoothly down the screen as the user reads the experience history.
+
+### SECTION 6: FOOTER (Source: Aziz Khaldi)
+* **Centerpiece:** A 3D floating element (Abstract shape or Robot head) using React Three Fiber. If 3D is too heavy, use a sequence of images that rotate on scroll.
+* **Typography:** Giant "YOUR NAME" text at the very bottom.
+* **Parallax:** The 3D element should rotate based on mouse movement (mousemove event).
+
+---
+
+## 5. DELIVERABLES
+1.  **Project Setup:** Initialize Next.js + Tailwind + Framer Motion.
+2.  **Code Output:** Provide the full code for:
+    * `app/page.tsx` (Main composition)
+    * `components/Hero.tsx` (The OGAKI Clone)
+    * `components/Experience.tsx` (The Scroll-Linked Line)
+    * `components/SmoothScroll.tsx` (Lenis implementation)
+3.  **Strict Instruction:** Ensure `globals.css` removes default scrollbars so Lenis can handle the scrolling physics exclusively.
