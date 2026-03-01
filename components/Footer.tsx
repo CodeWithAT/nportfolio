@@ -7,92 +7,100 @@ import { gsap } from "gsap";
 import { X, Send, ExternalLink, Github, User, Briefcase, Cpu, GraduationCap, Loader2, CheckCircle2, Mail } from "lucide-react";
 import emailjs from "@emailjs/browser";
 
-// --- 1. Sub-Component: About Content ---
+// --- 1. Sub-Component: About Content (Updated with Resume Details) ---
 const AboutContent = () => (
     <div className="space-y-8 animate-in fade-in slide-in-from-bottom-5 duration-700">
-        <h2 className="text-5xl font-bold tracking-tighter flex items-center gap-4 text-white">
-            <User className="text-lime-400" size={40} /> About
+        <h2 className="text-3xl md:text-5xl font-bold tracking-tighter flex items-center gap-3 md:gap-4 text-white">
+            <User className="text-lime-400" size={36} /> About
         </h2>
-        <p className="text-zinc-400 text-lg leading-relaxed">
-            I am <span className="text-white">Abhay Tiwari</span>, a Full Stack Developer specializing in 
-            cinematic digital experiences. After completing my 12th in 2021, I dedicated my time 
-            to mastering modern web architecture and 3D integration.
+        <p className="text-zinc-400 text-base md:text-lg leading-relaxed">
+            I am <span className="text-white font-bold">Abhay Tiwari</span>, a results-driven Full Stack Developer. 
+            I specialize in building scalable web applications across the frontend (React, HTML, CSS) and backend (Java, Spring Boot, Python, Django).
         </p>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div className="p-5 bg-white/5 rounded-2xl border border-white/10">
+            <div className="p-5 bg-white/5 rounded-2xl border border-white/10 hover:border-lime-400/30 transition-colors">
                 <Cpu className="text-lime-400 mb-2" size={20} />
-                <h4 className="font-bold text-white">Tech Stack</h4>
-                <p className="text-zinc-500 text-sm">Next.js, Java, Python, GSAP, Three.js</p>
+                <h4 className="font-bold text-white mb-1">Tech Stack</h4>
+                <p className="text-zinc-500 text-sm">React, Java (Spring Boot), Python, MySQL, Tailwind CSS</p>
             </div>
-            <div className="p-5 bg-white/5 rounded-2xl border border-white/10">
+            <div className="p-5 bg-white/5 rounded-2xl border border-white/10 hover:border-lime-400/30 transition-colors">
                 <GraduationCap className="text-lime-400 mb-2" size={20} />
-                <h4 className="font-bold text-white">Education</h4>
-                <p className="text-zinc-500 text-sm">Full Stack Specialization (Post-2021)</p>
+                <h4 className="font-bold text-white mb-1">Education</h4>
+                <p className="text-zinc-500 text-sm">BSc Computer Science, CSJMU Kanpur (2022 - 2026)</p>
             </div>
         </div>
     </div>
 );
 
-// --- 2. Sub-Component: Work Content ---
+// --- 2. Sub-Component: Work Content (Updated with Links Logic) ---
 const WorkContent = () => {
+    // Empty links ("") will automatically hide the button so it doesn't look broken
     const projects = [
-      {
-        title: "Third Party Risk Management",
-        desc: "Vendor risk assessment system with real-time scoring and workflow automation.",
-        tech: "JS, Risk Logic",
-        link: "#",
-        github: "#"
-      },
-      {
-        title: "Ticket Management System",
-        desc: "Admin dashboard for workflow support with SLA filtering and live chat.",
-        tech: "Next.js, Chart.js",
-        link: "#",
-        github: "#"
-      },
-      {
-        title: "Dhwani Store",
-        desc: "Modern e-commerce platform with scalable frontend architecture.",
-        tech: "React, Netlify",
-        link: "https://dhwani-store.netlify.app",
-        github: "#"
-      },
-      {
-        title: "Nalanda University Clone",
-        desc: "Pixel-perfect clone focusing on DOM manipulation and UI design.",
-        tech: "HTML, CSS, JS",
-        link: "#",
-        github: "#"
-      },
-      {
-        title: "TATA MOTORS Replica",
-        desc: "Modular codebase structure replica focusing on visual appeal.",
-        tech: "Frontend Dev",
-        link: "#",
-        github: "https://github.com/CodeWithAT/TATA_MOTORS"
-      },
-      {
-        title: "Niccolo Miranda Portfolio",
-        desc: "Interactive portfolio template with complex GSAP animations.",
-        tech: "GSAP, Animations",
-        link: "#",
-        github: "https://github.com/CodeWithAT/niccolomiranda"
-      }
-    ];
+        {
+          title: "Third Party Risk Management",
+          desc: "Vendor risk assessment system with real-time risk scoring and workflow automation.",
+          tech: "JavaScript, DB Mgmt",
+          link: "https://raw.githack.com/CodeWithAT/Third-Party-Risk-Management-TPRM-/main/index.html",
+          github: ""
+        },
+        {
+          title: "Ticket Management System",
+          desc: "Admin dashboard for workflow support with SLA filtering and live chat.",
+          tech: "HTML, CSS, JS, Chart.js",
+          link: "https://raw.githack.com/CodeWithAT/Ticket_Management_System/main/indexxx.html",
+          github: ""
+        },
+        {
+          title: "Dhwani Store",
+          desc: "Modern e-commerce platform with scalable frontend architecture.",
+          tech: "React, Netlify",
+          link: "https://dhwani-store.netlify.app/",
+          github: ""
+        },
+        {
+          title: "Nalanda University Clone",
+          desc: "Pixel-perfect clone focusing on DOM manipulation and UI design.",
+          tech: "HTML, CSS, JS",
+          link: "https://raw.githack.com/AT30035/Nalanda_University_colne/main/index.html",
+          github: ""
+        },
+        {
+          title: "TATA MOTORS Replica",
+          desc: "Modular codebase structure replica focusing on visual appeal.",
+          tech: "HTML, CSS, JS",
+          link: "https://raw.githack.com/CodeWithAT/TATA_MOTORS/main/index.html",
+          github: "https://github.com/CodeWithAT/TATA_MOTORS"
+        },
+        {
+          title: "Niccolo Miranda Portfolio",
+          desc: "Interactive portfolio template with complex GSAP animations.",
+          tech: "GSAP, Animations",
+          link: "https://raw.githack.com/CodeWithAT/niccolomiranda/main/niccolomiranda/index.html",
+          github: "https://github.com/CodeWithAT/niccolomiranda"
+        }
+      ];
 
     return (
         <div className="space-y-8 animate-in fade-in slide-in-from-bottom-5 duration-700">
-            <h2 className="text-5xl font-bold tracking-tighter flex items-center gap-4 text-white">
-                <Briefcase className="text-lime-400" size={40} /> Selected Work
+            <h2 className="text-3xl md:text-5xl font-bold tracking-tighter flex items-center gap-3 md:gap-4 text-white">
+                <Briefcase className="text-lime-400" size={36} /> Selected Work
             </h2>
             <div className="grid grid-cols-1 gap-4">
                 {projects.map((p, i) => (
-                    <div key={i} className="group p-6 bg-white/5 rounded-2xl border border-white/10 hover:border-lime-400/50 transition-all">
+                    <div key={i} className="group p-5 md:p-6 bg-white/5 rounded-2xl border border-white/10 hover:border-lime-400/50 transition-all">
                         <div className="flex justify-between items-center mb-2">
-                            <h3 className="text-xl font-bold text-white group-hover:text-lime-400 transition-colors">{p.title}</h3>
+                            <h3 className="text-lg md:text-xl font-bold text-white group-hover:text-lime-400 transition-colors">{p.title}</h3>
                             <div className="flex gap-3">
-                                {p.github !== "#" && <a href={p.github} className="text-zinc-500 hover:text-white"><Github size={18} /></a>}
-                                {p.link !== "#" && <a href={p.link} className="text-zinc-500 hover:text-white"><ExternalLink size={18} /></a>}
+                                {p.github && p.github !== "" && (
+                                    <a href={p.github} target="_blank" rel="noopener noreferrer" className="text-zinc-500 hover:text-white transition-colors">
+                                        <Github size={18} />
+                                    </a>
+                                )}
+                                {p.link && p.link !== "" && (
+                                    <a href={p.link} target="_blank" rel="noopener noreferrer" className="text-zinc-500 hover:text-lime-400 transition-colors">
+                                        <ExternalLink size={18} />
+                                    </a>
+                                )}
                             </div>
                         </div>
                         <p className="text-zinc-400 text-sm mb-3 leading-relaxed">{p.desc}</p>
@@ -139,8 +147,8 @@ const ContactContent = () => {
     return (
         <div className="space-y-8 animate-in fade-in slide-in-from-bottom-5 duration-700">
             <div>
-                <h2 className="text-5xl font-bold tracking-tighter mb-2 text-white">Contact</h2>
-                <p className="text-zinc-400">Available for collaborations and roles.</p>
+                <h2 className="text-3xl md:text-5xl font-bold tracking-tighter mb-2 text-white">Contact</h2>
+                <p className="text-zinc-400">Available for collaborations and full-time roles.</p>
             </div>
             <form ref={formRef} onSubmit={sendEmail} className="space-y-4">
                 <input 
@@ -274,8 +282,7 @@ export default function Footer() {
     return (
         <footer className="relative h-screen bg-black text-white overflow-hidden flex flex-col justify-between pt-20" id="footer">
             
-            {/* --- NEW: FIXED TOP-RIGHT CONTACT BUTTON --- */}
-            {/* Changed 'left-6' to 'right-6' here 👇 */}
+            {/* --- FIXED TOP-RIGHT CONTACT BUTTON --- */}
             <button 
                 onClick={() => setActiveModal('contact')}
                 className="fixed top-4 right-4 md:top-6 md:right-6 z-50 flex items-center gap-3 px-4 py-2 md:px-5 md:py-2.5 bg-zinc-900/40 backdrop-blur-xl border border-white/10 rounded-full hover:bg-zinc-800/60 hover:border-lime-400/30 transition-all duration-300 group cursor-pointer shadow-lg shadow-black/20"
@@ -316,21 +323,21 @@ export default function Footer() {
             </div>
 
             {/* --- FOOTER NAV --- */}
-            <div className="flex justify-between items-start px-10 md:px-20 z-30 relative pointer-events-none">
-                <div className="flex gap-8 md:gap-32 pointer-events-auto">
+            <div className="flex flex-col md:flex-row justify-between items-start px-8 md:px-20 z-30 relative pointer-events-none gap-8 md:gap-0 pb-8 md:pb-0">
+                <div className="flex flex-col md:flex-row gap-8 md:gap-32 pointer-events-auto w-full md:w-auto">
                     <div>
-                        <h4 className="text-zinc-600 text-[10px] uppercase tracking-[0.3em] mb-6 font-bold">Index</h4>
-                        <ul className="space-y-3 font-medium text-lg text-white">
-                            <li><button onClick={() => setActiveModal('work')} className="hover:text-lime-400 transition-all duration-300 hover:translate-x-1">Work</button></li>
-                            <li><button onClick={() => setActiveModal('about')} className="hover:text-lime-400 transition-all duration-300 hover:translate-x-1">About</button></li>
-                            <li><button onClick={() => setActiveModal('contact')} className="hover:text-lime-400 transition-all duration-300 hover:translate-x-1 font-bold italic">Contact</button></li>
+                        <h4 className="text-zinc-600 text-[10px] uppercase tracking-[0.3em] mb-4 md:mb-6 font-bold">Index</h4>
+                        <ul className="space-y-3 font-medium text-base md:text-lg text-white">
+                            <li><button onClick={() => setActiveModal('work')} className="hover:text-lime-400 transition-all duration-300 hover:translate-x-1 text-left">Work</button></li>
+                            <li><button onClick={() => setActiveModal('about')} className="hover:text-lime-400 transition-all duration-300 hover:translate-x-1 text-left">About</button></li>
+                            <li><button onClick={() => setActiveModal('contact')} className="hover:text-lime-400 transition-all duration-300 hover:translate-x-1 font-bold italic text-left">Contact</button></li>
                         </ul>
                     </div>
                     <div>
-                        <h4 className="text-zinc-600 text-[10px] uppercase tracking-[0.3em] mb-6 font-bold">Connect</h4>
-                        <ul className="space-y-3 font-medium text-lg text-white">
-                            <li><a href="https://github.com/abhay-tiwari" className="hover:text-lime-400 transition-all flex items-center gap-2">Github <Github size={14}/></a></li>
-                            <li><a href="https://www.linkedin.com/in/abhay-tiwari-93b412290/" className="hover:text-lime-400 transition-all flex items-center gap-2">LinkedIn <ExternalLink size={14}/></a></li>
+                        <h4 className="text-zinc-600 text-[10px] uppercase tracking-[0.3em] mb-4 md:mb-6 font-bold">Connect</h4>
+                        <ul className="space-y-3 font-medium text-base md:text-lg text-white">
+                            <li><a href="https://github.com/abhay-tiwari" target="_blank" rel="noopener noreferrer" className="hover:text-lime-400 transition-all flex items-center gap-2">Github <Github size={14}/></a></li>
+                            <li><a href="https://www.linkedin.com/in/abhay-tiwari-93b412290/" target="_blank" rel="noopener noreferrer" className="hover:text-lime-400 transition-all flex items-center gap-2">LinkedIn <ExternalLink size={14}/></a></li>
                         </ul>
                     </div>
                 </div>
@@ -362,7 +369,7 @@ export default function Footer() {
 
             {/* --- GIANT NAME (Z-Index: 20 - In Front of Robot) --- */}
             <div className="absolute bottom-0 left-0 w-full text-center overflow-hidden z-20 pointer-events-none">
-                <h1 className="text-[35vw] md:text-[26vw] leading-[0.75] font-black text-white mix-blend-overlay opacity-75 select-none tracking-tighter">
+                <h1 className="text-[28vw] md:text-[26vw] leading-[0.8] font-black text-white mix-blend-overlay opacity-75 select-none tracking-tighter">
                     ABHAY
                 </h1>
             </div>
